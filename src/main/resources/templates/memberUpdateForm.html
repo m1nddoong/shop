@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>회원정보 수정 폼</title>
+</head>
+<body>
+<h1>회원 정보 수정</h1>
+<!-- 수정 폼이 MemberForm 이랑 비슷할 것같은 느낌이 들기때문에 MemberForm 내용 복사해서 가져오기 -->
+<!-- 다른점은 수정하기 전 수정할 값이 채워져있어야함!!! -->
+
+<form action="update" method="post">
+  이름 : <input type="text" name="name" th:value="${member.name}" placeholder="이름을 입력하세요. "><br>
+  어이디 : <input type="text" name="id" th:value="${member.id}" placeholder="아이디을 입력하세요. " readonly><br>
+  비밀번호 : <input type="password" name="password" th:value="${member.password}" placeholder="비밀번호를 입력하세요. "><br>
+  이메일 : <input type="text" name="email" th:value="${member.email}" placeholder="이메일을 입력하세요. "><br>
+  phone : <input type="text" name="phone" th:value="${member.phone}" placeholder="휴대폰 번호를 입력하세요. "><br>
+  <input type="submit" value="수정">
+</form>
+
+</body>
+</html>

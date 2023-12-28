@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>memberList</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<h1>회원 목록</h1>
+<table id="customers">
+    <thead>
+    <tr>
+        <th>이름</th>
+        <th>아이디</th>
+        <th>비밀번호</th>
+        <th>이메일</th>
+        <th>주소</th>
+        <th>수정</th>
+        <th>삭제</th>
+    </tr>
+    </thead>
+    <!-- 실제 내용이 나와야 하는 부분이 tbody -->
+    <!-- 리스트가 보내준 숫자만큼 반복해서 위 정보들을 출력해야한다 -->
+    <!-- 멤버 리스트에 멤버가 3명있으면 3번 반복해야함 -->
+    <tbody>
+    <!-- 반복문 : members 라고 이름을 지어준 멤버 리스트에서 하나씩 꺼내서 member 로 할당 -->
+    <tr th:each="member : ${members}">
+        <!-- 값을 텍스트로 뿌려줄 것 -->
+        <td th:text="${member.name}"></td>
+        <td th:text="${member.id}"></td>
+        <td th:text="${member.password}"></td>
+        <td th:text="${member.email}"></td>
+        <td th:text="${member.phone}"></td>
+        <td>
+            <!-- /member/update 에서 슬래시 없이쓰면 상대주소, 슬래시 있으면 절대주소? -->
+            <!-- 우리가 url 에 ? 했던 것은 괄호로 (id=${member.id]}) 표시-->
+            <a th:href="@{/member/update(id=${member.id})}">수정</a>
+        </td>
+        <td>
+            <a th:href="@{/member/delete(id=${member.id})}">삭제</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{add}">회원가입</a>
+<a th:href="@{/member/add}">회원가입</a>
+
+</body>
+</html>
